@@ -1,0 +1,8 @@
+.top-div{
+    background-image: url(../../Images/banner.jpg);
+    
+   height: 400px;
+   background-size: cover;
+   background-repeat: no-repeat;
+
+}

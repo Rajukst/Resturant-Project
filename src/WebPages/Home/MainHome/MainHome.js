@@ -1,11 +1,12 @@
 import React from "react";
 import TopBanner from "../../Top-Banner/TopBanner";
+import Products from "../Products/Products";
 
 const MainHome = () => {
   return (
     <div>
       <TopBanner></TopBanner>
-      <h1>This is Home Product</h1>
+      <Products></Products>
     </div>
   );
 };

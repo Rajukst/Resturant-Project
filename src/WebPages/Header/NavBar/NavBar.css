@@ -3,3 +3,8 @@
     margin: 0 40px;
     color: white;
 }
+.font{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}

@@ -1,0 +1,37 @@
+.section{
+    background-image: url(../../Images/Register.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.my-continer{
+    background-color: rgba(0, 0, 0, 0.315) ;
+    max-width: 700px;
+    margin: auto;
+    height: 70vh;
+    width: 100%;
+
+    justify-content: center;
+    border-radius: 10px;
+}
+.user-container input{
+    width: 80%;
+    margin: 10px 30px;
+    height: 30px;
+
+    background: none;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.158) ;
+    color: white;
+}
+#fname{
+    height: 50px;
+}
+.all-buttons{
+    justify-content: space-around;
+    display: flex;
+   
+}

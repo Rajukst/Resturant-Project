@@ -2,6 +2,8 @@ import React from "react";
 import { Container, Nav, Navbar, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./NavBar.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartPlus, faCoffee } from "@fortawesome/free-solid-svg-icons";
 const NavBar = () => {
   return (
     <div>
@@ -15,9 +17,16 @@ const NavBar = () => {
               <Link to="/dashboard">Dashboard</Link>
             </Nav>
             <Nav>
-              <Link to="/login">
-                <Button>Login</Button>
-              </Link>
+              <div className="font">
+                <FontAwesomeIcon
+                  className="text-light me-5"
+                  icon={faCartPlus}
+                  size="2x"
+                />
+                <Link to="/login">
+                  <Button>Login</Button>
+                </Link>
+              </div>
             </Nav>
           </Navbar.Collapse>
         </Container>
