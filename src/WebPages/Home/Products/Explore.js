@@ -7,7 +7,9 @@ import "aos/dist/aos.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import useAuth from "../../../Hooks/useAuth";
 const Explore = ({ exploreProducts }) => {
+  const { user } = useAuth();
   useEffect(() => {
     AOS.init();
   });
@@ -38,6 +40,12 @@ const Explore = ({ exploreProducts }) => {
                   <Button variant="outline-info">Food Details</Button>
                 </Link>
               </div>
+              {user.email && (
+                <div className="button-div mt-3">
+                  <Button variant="outline-warning">Update Product</Button>
+                  <Button variant="outline-danger">Delete Product</Button>
+                </div>
+              )}
             </Card.Body>
           </Card>
         </Col>

@@ -3,7 +3,9 @@ import React from "react";
 const Footer = () => {
   return (
     <div>
-      <h1>This is Footer</h1>
+      <footer className="footer">
+        <p>This is react sticky footer!!</p>
+      </footer>
     </div>
   );
 };

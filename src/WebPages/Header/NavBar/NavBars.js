@@ -3,14 +3,17 @@ import { Container, Nav, Navbar, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./NavBar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartPlus, faCoffee } from "@fortawesome/free-solid-svg-icons";
-const NavBar = () => {
+import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
+import useFirebase from "../../../Hooks/useFirebase";
+const NavBars = () => {
+  const { user, logOut } = useFirebase();
   return (
     <div>
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Navbar fixed="top" collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
+            <h4 className="text-light me-5">Diana</h4>
             <Nav className="me-auto responsiveUi">
               <Link to="/home">Home</Link>
               <Link to="/about">About</Link>
@@ -23,9 +26,14 @@ const NavBar = () => {
                   icon={faCartPlus}
                   size="2x"
                 />
-                <Link to="/login">
-                  <Button>Login</Button>
-                </Link>
+                <div className="text-light me-2">Logged: {user.email} </div>
+                {user.email ? (
+                  <Button onClick={logOut}>LogOut</Button>
+                ) : (
+                  <Link className="class-link" to="/login">
+                    Login
+                  </Link>
+                )}
               </div>
             </Nav>
           </Navbar.Collapse>
@@ -35,4 +43,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+export default NavBars;

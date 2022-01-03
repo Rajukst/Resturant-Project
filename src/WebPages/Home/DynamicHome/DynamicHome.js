@@ -3,8 +3,10 @@ import { Button, Col, Container, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { Link, useParams } from "react-router-dom/cjs/react-router-dom.min";
 import Swal from "sweetalert2";
+import useAuth from "../../../Hooks/useAuth";
 
 const DynamicHome = () => {
+  const { user } = useAuth();
   const { serviceId } = useParams();
   const [items, setItems] = useState({});
   useEffect(() => {
@@ -51,6 +53,7 @@ const DynamicHome = () => {
             <h3>Product Name: {items.name} </h3>
             <h3>Product Price: {items.price} </h3>
             <h3>Product Details: {items.description} </h3>
+            <h3>User: {user.email} </h3>
             <h2>To Buy Product Please Fillup this Form</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
               <input
@@ -81,6 +84,12 @@ const DynamicHome = () => {
                 className="p-2 m-2 w-100"
               />
               <br />
+              <input
+                {...register("email", { required: true })}
+                defaultValue={user?.email}
+                className="p-2 m-2"
+                className="p-2 m-2 w-100"
+              />
               <input
                 {...register("image", { required: true })}
                 defaultValue={items?.image}

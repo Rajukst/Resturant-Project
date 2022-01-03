@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import Swal from "sweetalert2";
+import useFirebase from "../../Hooks/useFirebase";
 import "./Register.css";
 
 const Register = () => {
   const [registerUser, setRegisterUser] = useState({});
+  const { emailRegistration } = useFirebase();
   const handleOnSubmit = (e) => {
     e.preventDefault();
     if (registerUser.Password === registerUser.Password2)
@@ -16,12 +18,7 @@ const Register = () => {
         showConfirmButton: false,
         timer: 1500,
       });
-    else if (registerUser.Password !== registerUser.Password2)
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Your Password Was Incorrect!",
-      });
+    emailRegistration(registerUser.email, registerUser.Password);
   };
   const registerOnChange = (e) => {
     const nameField = e.target.name;
@@ -42,6 +39,7 @@ const Register = () => {
               name="UserName"
               placeholder="UserName"
               onChange={registerOnChange}
+              required
             />
             <br />
             <input
@@ -50,6 +48,7 @@ const Register = () => {
               name="email"
               placeholder="User Email"
               onChange={registerOnChange}
+              required
             />
             <br />
             <input
@@ -58,6 +57,7 @@ const Register = () => {
               name="Password"
               placeholder="Password"
               onChange={registerOnChange}
+              required
             />
             <br />
             <input
@@ -66,6 +66,7 @@ const Register = () => {
               name="Password2"
               placeholder="Retype Password"
               onChange={registerOnChange}
+              required
             />
             <br />
             <div className="all-buttons">

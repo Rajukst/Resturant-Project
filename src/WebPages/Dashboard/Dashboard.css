@@ -1,0 +1,17 @@
+/* .shed-borders{
+    border: 5px solid black;
+    text-align: left;
+} */
+.shed-borders p{
+   
+    text-align: left;
+}
+.shed-borders a{
+   
+    text-decoration: none;
+    font-size: 20px;
+}
+.shed-borders{
+    height: 100%;
+    border: orangered 5px solid;
+}
