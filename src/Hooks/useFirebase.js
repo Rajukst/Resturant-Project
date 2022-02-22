@@ -6,6 +6,7 @@ import {
   signInWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
+  updateProfile,
 } from "firebase/auth";
 import { useEffect, useState } from "react";
 import initialApp from "../WebPages/Firebase/firebase.init";
@@ -14,6 +15,7 @@ initialApp();
 const useFirebase = () => {
   const [user, setUser] = useState({});
   const [error, setError] = useState("");
+  const [admin, setAdmin] = useState(false);
   const auth = getAuth();
   const googleProvider = new GoogleAuthProvider();
 
@@ -23,11 +25,25 @@ const useFirebase = () => {
     });
   };
   // sign up method
-  const emailRegistration = (email, password) => {
+  const emailRegistration = (email, password, history, name) => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
+        const newUser = { email, displayName: name };
+        setUser(newUser);
+        updateProfile(auth.currentUser, {
+          displayName: name,
+        })
+          .then(() => {
+            // Profile updated!
+            // ...
+          })
+          .catch((error) => {
+            // An error occurred
+            // ...
+          });
         const user = userCredential.user;
+        history.replace("/");
         setError("");
       })
       .catch((error) => {
@@ -41,6 +57,7 @@ const useFirebase = () => {
       .then((userCredential) => {
         const destination = location?.state?.from || "/home";
         history.replace(destination);
+        saveUser(user.email, user.displayName, "PUT");
         setError("");
       })
       .catch((error) => {
@@ -65,7 +82,24 @@ const useFirebase = () => {
       }
     });
   }, []);
+
+  const saveUser = (email, displayName, method) => {
+    const user = { email, displayName };
+    fetch("http://localhost:5000/users", {
+      method: method,
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    }).then();
+    // useEffect(() => {
+    //   fetch(`http://localhost:5000/users/${user.email}`)
+    //     .then((res) => res.json())
+    //     .then((data) => setAdmin(data.admin));
+    // }, [user.email]);
+  };
   return {
+    admin,
     user,
     emailRegistration,
     logOut,

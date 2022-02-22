@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { Link, useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import Swal from "sweetalert2";
 import useFirebase from "../../Hooks/useFirebase";
 import "./Register.css";
@@ -8,6 +8,7 @@ import "./Register.css";
 const Register = () => {
   const [registerUser, setRegisterUser] = useState({});
   const { emailRegistration } = useFirebase();
+  const history = useHistory();
   const handleOnSubmit = (e) => {
     e.preventDefault();
     if (registerUser.Password === registerUser.Password2)
@@ -18,7 +19,12 @@ const Register = () => {
         showConfirmButton: false,
         timer: 1500,
       });
-    emailRegistration(registerUser.email, registerUser.Password);
+    emailRegistration(
+      registerUser.email,
+      registerUser.Password,
+      registerUser.name,
+      history
+    );
   };
   const registerOnChange = (e) => {
     const nameField = e.target.name;

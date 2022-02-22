@@ -16,7 +16,7 @@ const Dashboard = () => {
     <div className="my-dashboard">
       <Container fluid className="mt-5">
         <Row>
-          <Col className="shed-borders" xs={12} md={3} lg={3}>
+          <Col className="shed-borders" xs={12} md={2} lg={2}>
             <Link to={`${url}/my-order`}>
               <p className="ms-5 mt-5">My Order</p>
             </Link>
@@ -33,7 +33,7 @@ const Dashboard = () => {
               <p className="ms-5">Add Product</p>
             </Link>
           </Col>
-          <Col xs={12} md={9} lg={9}>
+          <Col xs={12} md={10} lg={10}>
             <Switch>
               <Route path={`${path}/add-product`}>
                 <AddProduct></AddProduct>

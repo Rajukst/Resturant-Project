@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Card, Col } from "react-bootstrap";
 import { AnimationWrapper } from "react-hover-animation";
 import "./Explore.css";
@@ -13,6 +13,7 @@ const Explore = ({ exploreProducts }) => {
   useEffect(() => {
     AOS.init();
   });
+
   const { _id, name, image, description, price } = exploreProducts;
   return (
     <div className="div-left" data-aos="zoom-in">
@@ -21,9 +22,10 @@ const Explore = ({ exploreProducts }) => {
           <Card>
             <Card.Img variant="top" src={image} />
             <Card.Body>
-              <Card.Title>{name}</Card.Title>
-              <Card.Title>{price}</Card.Title>
+              <Card.Title>Food Name: {name}</Card.Title>
+              <Card.Title>Price: {price}</Card.Title>
               <Card.Text className="description">
+                <span className="food-info">Food Info:</span>{" "}
                 {description.slice(0, 200)}
               </Card.Text>
               <div className="button-div">
@@ -37,15 +39,11 @@ const Explore = ({ exploreProducts }) => {
                 </Button>
                 <Link to={`/order-page/${_id}`}>
                   {" "}
-                  <Button variant="outline-info">Food Details</Button>
+                  <Button className="ms-5" variant="outline-info">
+                    Food Details
+                  </Button>
                 </Link>
               </div>
-              {user.email && (
-                <div className="button-div mt-3">
-                  <Button variant="outline-warning">Update Product</Button>
-                  <Button variant="outline-danger">Delete Product</Button>
-                </div>
-              )}
             </Card.Body>
           </Card>
         </Col>

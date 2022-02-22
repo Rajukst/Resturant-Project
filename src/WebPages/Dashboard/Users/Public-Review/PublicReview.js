@@ -17,6 +17,7 @@ const PublicReview = () => {
       .then((res) => res.json())
       .then((data) => console.log(data));
     e.preventDefault();
+    console.log(e);
   };
   return (
     <div>

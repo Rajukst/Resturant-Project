@@ -7,6 +7,7 @@ import useAuth from "../../../Hooks/useAuth";
 
 const DynamicHome = () => {
   const { user } = useAuth();
+
   const { serviceId } = useParams();
   const [items, setItems] = useState({});
   useEffect(() => {

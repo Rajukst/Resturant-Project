@@ -18,3 +18,7 @@
 .font-div{
     color: black;
 }
+.food-info{
+    font-weight: bolder;
+    text-decoration: underline;
+}
