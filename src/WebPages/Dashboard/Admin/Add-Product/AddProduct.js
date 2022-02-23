@@ -39,7 +39,7 @@ const AddProduct = () => {
   };
   return (
     <div className="addProduct-image">
-      <h1>This is Add Product</h1>
+      <h1 className="pt-5"> Add Product</h1>
       <form onSubmit={handleOnSubmit}>
         <input
           type="text"

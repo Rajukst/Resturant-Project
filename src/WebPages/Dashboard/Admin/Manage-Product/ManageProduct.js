@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Button, Row, Table } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "./ManageProduct.css";
 
 const ManageProduct = () => {
@@ -9,6 +10,27 @@ const ManageProduct = () => {
       .then((res) => res.json())
       .then((data) => setUpdate(data));
   }, []);
+
+  // delete product
+  const handleDeleteUser = (id) => {
+    const proceed = window.confirm("are you sure to delete your product?");
+    if (proceed) {
+      const url = `http://localhost:5000/home-product/${id}`;
+      fetch(url, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.deletedCount > 0) {
+            alert("deleted Successfully");
+            const remainingProducts = update.filter(
+              (newUpdate) => newUpdate._id !== id
+            );
+            setUpdate(remainingProducts);
+          }
+        });
+    }
+  };
   return (
     <div>
       <h1>This is Manage Products</h1>
@@ -31,12 +53,18 @@ const ManageProduct = () => {
               <td>{myRow.price}</td>
               <td>{myRow.description}</td>
               <td>
-                <Button className="my-button" variant="warning">
-                  Update
-                </Button>
+                <Link to={`/manage-product/update/${myRow._id}`}>
+                  <Button className="my-button" variant="warning">
+                    Update
+                  </Button>
+                </Link>
               </td>
               <td>
-                <Button className="my-button" variant="danger">
+                <Button
+                  onClick={() => handleDeleteUser(myRow._id)}
+                  className="my-button"
+                  variant="danger"
+                >
                   Delete
                 </Button>
               </td>
