@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
+import { Button } from "react-bootstrap";
 import Swal from "sweetalert2";
-
+import "./AddProduct.css";
 const AddProduct = () => {
   const addName = useRef();
   const addPrice = useRef();
@@ -37,7 +38,7 @@ const AddProduct = () => {
       });
   };
   return (
-    <div>
+    <div className="addProduct-image">
       <h1>This is Add Product</h1>
       <form onSubmit={handleOnSubmit}>
         <input
@@ -70,10 +71,19 @@ const AddProduct = () => {
         />
         <br />
         <br />
-        <textarea id="" ref={addText} name="" rows="" cols=""></textarea>
+        <textarea
+          placeholder="Short Description"
+          id=""
+          ref={addText}
+          name=""
+          rows=""
+          cols=""
+        ></textarea>
         <br />
         <br />
-        <input type="submit" value="Add Product" />
+        <Button type="submit" variant="outline-info">
+          Add Product
+        </Button>
       </form>
     </div>
   );

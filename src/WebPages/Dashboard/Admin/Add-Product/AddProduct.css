@@ -1,0 +1,23 @@
+input{
+    width: 80%;
+    height: 50px;
+    background: none;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.158) ;
+    color: white;
+}
+textarea{
+    width: 80%;
+    height: 50px;
+    background: none;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.158) ;
+    color: white;
+}
+.addProduct-image{
+    background-image: url("../../../../Images/picture1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+}
