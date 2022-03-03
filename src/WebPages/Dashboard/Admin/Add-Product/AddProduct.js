@@ -16,7 +16,7 @@ const AddProduct = () => {
     const description = addText.current.value;
     const totalAdd = { name, price, image, description };
     console.log(totalAdd);
-    fetch("http://localhost:5000/add-product", {
+    fetch("https://shrouded-mountain-85773.herokuapp.com/add-product", {
       method: "POST",
       headers: {
         "content-type": "application/json",

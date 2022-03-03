@@ -21,7 +21,7 @@ const Products = () => {
     }
   };
   useEffect(() => {
-    fetch("http://localhost:5000/home-product")
+    fetch("https://shrouded-mountain-85773.herokuapp.com/home-product")
       .then((res) => res.json())
       .then((data) => setExplore(data));
   }, []);

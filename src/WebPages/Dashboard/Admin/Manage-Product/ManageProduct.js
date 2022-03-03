@@ -6,7 +6,7 @@ import "./ManageProduct.css";
 const ManageProduct = () => {
   const [update, setUpdate] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/home-product")
+    fetch("https://shrouded-mountain-85773.herokuapp.com/home-product")
       .then((res) => res.json())
       .then((data) => setUpdate(data));
   }, []);
@@ -15,7 +15,7 @@ const ManageProduct = () => {
   const handleDeleteUser = (id) => {
     const proceed = window.confirm("are you sure to delete your product?");
     if (proceed) {
-      const url = `http://localhost:5000/home-product/${id}`;
+      const url = `https://shrouded-mountain-85773.herokuapp.com/home-product/${id}`;
       fetch(url, {
         method: "DELETE",
       })
